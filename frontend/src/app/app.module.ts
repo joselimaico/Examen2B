@@ -11,6 +11,9 @@ import { PadreComponent } from './Componentes/padre/padre.component';
 import {PadreService} from "./Servicios/padre.service";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule,} from "@angular/common/http";
 import { HijoComponent } from './Componentes/hijo/hijo.component';
+import {RouterModule} from "@angular/router";
+import {RUTAS_APP} from "./app.routes";
+import {FindService} from "./Servicios/find.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,12 @@ import { HijoComponent } from './Componentes/hijo/hijo.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(
+      RUTAS_APP,
+      {
+        useHash: true
+      }
+    ),
     NgbModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
@@ -29,7 +38,7 @@ import { HijoComponent } from './Componentes/hijo/hijo.component';
     HttpClientModule
   ],
   providers: [
-    PadreService,
+    PadreService,FindService
 
 
   ],
