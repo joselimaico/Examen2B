@@ -9,6 +9,7 @@ import {PadreService} from "./Servicios/padre.service";
 })
 export class AppComponent implements  OnInit{
   title = 'app';
+  contadorCart=0
   usuario:Usuario[]
   constructor(private _padreService: PadreService,){
 
@@ -20,7 +21,10 @@ export class AppComponent implements  OnInit{
     //     res => this.padres = res,
     //     err => console.log(err)
     //   )
+
     this.getUsuario()
+    this.contadorCart=this._padreService._contadorCart
+    this.escucharCambiosContadorCart()
 
   }
 
@@ -28,5 +32,14 @@ export class AppComponent implements  OnInit{
     this._padreService.getUsuario()
       .subscribe(usuario => this.usuario = usuario);
 
+  }
+  escucharCambiosContadorCart() {
+    this._padreService
+      .cambioContadorCart
+      .subscribe(
+        (contadorCart: number) => {
+          this.contadorCart = contadorCart;
+        }
+      )
   }
 }

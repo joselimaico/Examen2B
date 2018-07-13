@@ -30,7 +30,7 @@
     <div class="col-md-3 mb-3" *ngFor="let hijo of padre.apps">
       <div class="card text-center"(click)="mostrarDetalleHijo(hijo)">
         <div class="card-body">
-          <img class="card-img-top" src="{{hijo.img}}" alt="imagen app">
+          <img class="card-img-top" src="{{hijo.img}}" width="160" height="80" alt="imagen app">
           <h5 class="card-title">{{hijo.name}}</h5>
           <p class="card-text">{{hijo.version}}</p>
           <!--<a href="#" class="btn btn-success">Buy Tickets</a>-->
@@ -43,8 +43,8 @@
 
 
 </div>
-<div class="row mt-4">
-  <div class="col-sm-4 pt-5">
+<div class="row pt-2">
+  <div class="col-sm-4">
     <button mat-raised-button (click)="goBack()">regresar</button>
     <br>
   </div>

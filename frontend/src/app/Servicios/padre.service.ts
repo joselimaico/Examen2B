@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Padre} from "../Clases/padre";
-//import {PADRES} from "../Clases/mock-padres";
 import { Observable, of } from 'rxjs';
 import {catchError,map,tap} from "rxjs/operators";
 import {Hijo} from "../Clases/hijo";
@@ -13,10 +12,17 @@ export class PadreService {
   private _padresUrl = "http://localhost:1337/api";
   private _hijoUrl = "http://localhost:1337/aplicaciones";
   private _usuarioUrl="http://localhost:1337/user"
+   _contadorCart:number=0
+  cambioContadorCart: EventEmitter<number> = new EventEmitter();
 
   constructor(private http: HttpClient) {
 
   }
+  emitirCambioContadorCart(contador:number) {
+    this._contadorCart =contador ;
+    this.cambioContadorCart.emit(contador);
+  }
+
   getPadres():Observable<Padre[]> {
     return this.http.get<Padre[]>(this._padresUrl)
       // .pipe(

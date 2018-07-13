@@ -18,6 +18,7 @@ import { DescripcionPadreComponent } from './Componentes/descripcion-padre/descr
 import { HomeComponent } from './Componentes/home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import { DescripcionHijoComponent } from './Componentes/descripcion-hijo/descripcion-hijo.component';
+import { CartComponent } from './Componentes/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { DescripcionHijoComponent } from './Componentes/descripcion-hijo/descrip
     HijoComponent,
     DescripcionPadreComponent,
     HomeComponent,
-    DescripcionHijoComponent
+    DescripcionHijoComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import {PadreComponent} from "./Componentes/padre/padre.component";
 import {HijoComponent} from "./Componentes/hijo/hijo.component";
 import {HomeComponent} from "./Componentes/home/home.component";
 import {DescripcionHijoComponent} from "./Componentes/descripcion-hijo/descripcion-hijo.component";
+import {CartComponent} from "./Componentes/cart/cart.component";
 
 export const RUTAS_APP: Routes = [
   {
@@ -27,6 +28,10 @@ export const RUTAS_APP: Routes = [
   {
     path:'hijo/:id',
     component:DescripcionHijoComponent
+  },
+  {
+    path:'carrito',
+    component:CartComponent
   }
 
 

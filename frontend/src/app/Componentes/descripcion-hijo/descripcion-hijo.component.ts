@@ -12,6 +12,7 @@ import {Hijo} from "../../Clases/hijo";
 export class DescripcionHijoComponent implements OnInit {
 
   @Input() hijo:Hijo
+  contador:number=0
   constructor(private _service:PadreService,
               private route:ActivatedRoute,
               private _location: Location) {
@@ -27,6 +28,11 @@ export class DescripcionHijoComponent implements OnInit {
       .subscribe(hijo => this.hijo = hijo);
   }
   goBack(): void {
+    this._location.back();
+  }
+  comprar(){
+    this.contador+=1
+    this._service.emitirCambioContadorCart(this.contador)
     this._location.back();
   }
 }
