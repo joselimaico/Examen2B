@@ -1,0 +1,31 @@
+<div class="row mt-5" *ngIf="padre">
+  <div class="col-md-12 mb-3" >
+    <div class="card  text-center"  >
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1 class="card-title">{{padre.name| uppercase}}</h1>
+            <p class="card-text">Versión API: {{padre.api}}</p>
+            <p class="card-text">Fecha Lanzamiento: {{padre.date}}</p>
+            <p class="card-text">Peso GB: {{padre.weight}}</p>
+            <p class="card-text">Instalado: {{padre.installed}}</p>
+          </div>
+          <div class="col-sm-6">
+            <img class="card-img-top" src="{{padre.img}}" alt="imagen SO">
+
+          </div>
+        </div>
+
+
+        <!--<a href="#" class="btn btn-primary">Buy Tickets</a>-->
+      </div>
+
+    </div>
+
+  </div>
+  <div class="col-sm-4">
+    <button mat-raised-button (click)="goBack()">regresar</button>
+  </div>
+</div>
+
+

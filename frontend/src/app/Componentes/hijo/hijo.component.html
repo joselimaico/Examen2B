@@ -1,13 +1,14 @@
 <div class="row mt-5">
-  <div class="col-md-3 mb-3" *ngFor="let event of hijos">
+  <div class="col-md-3 mb-3" *ngFor="let hijo of hijos">
     <div class="card text-center">
       <div class="card-body">
-        <h5 class="card-title">{{event.name}}</h5>
-        <p class="card-text">{{event.description}}</p>
-        <a href="#" class="btn btn-success">Buy Tickets</a>
+        <img class="card-img-top" src="{{hijo.img}}" alt="imagen app">
+        <h5 class="card-title">{{hijo.name}}</h5>
+        <p class="card-text">{{hijo.version}}</p>
+        <!--<a href="#" class="btn btn-success">Buy Tickets</a>-->
       </div>
       <div class="card-footer text-muted">
-        {{event.date | date:'shortDate'}}
+        {{hijo.date | date:'shortDate'}}
       </div>
     </div>
   </div>

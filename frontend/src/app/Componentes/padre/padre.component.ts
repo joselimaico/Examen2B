@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PadreService} from "../../Servicios/padre.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Padre} from "../../Clases/padre";
 
 @Component({
   selector: 'app-padre',
@@ -8,15 +10,31 @@ import {PadreService} from "../../Servicios/padre.service";
 })
 export class PadreComponent implements OnInit {
 
- padres = []
-  constructor(private _padreService: PadreService) { }
+ //padres = []
+  padres:Padre[];
+  selectedPadre: Padre;
+  constructor(private _padreService: PadreService,
+              private _router:Router,
+              private _route:ActivatedRoute) { }
 
   ngOnInit() {
+    // this._padreService.getPadres()
+    //   .subscribe(
+    //     res => this.padres = res,
+    //     err => console.log(err)
+    //   )
+    this.getPadres()
+
+  }
+  mostrarDetallePadre(padre:Padre):void{
+
+    this._router.navigate(['/padre',padre.id]);
+    this.selectedPadre=padre
+
+  }
+  getPadres(): void {
     this._padreService.getPadres()
-      .subscribe(
-        res => this.padres = res,
-        err => console.log(err)
-      )
+      .subscribe(padres => this.padres = padres);
   }
 
 }

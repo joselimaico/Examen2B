@@ -9,17 +9,22 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import { PadreComponent } from './Componentes/padre/padre.component';
 import {PadreService} from "./Servicios/padre.service";
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule,} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHeaders ,} from "@angular/common/http";
 import { HijoComponent } from './Componentes/hijo/hijo.component';
 import {RouterModule} from "@angular/router";
 import {RUTAS_APP} from "./app.routes";
 import {FindService} from "./Servicios/find.service";
+import { DescripcionPadreComponent } from './Componentes/descripcion-padre/descripcion-padre.component';
+import { HomeComponent } from './Componentes/home/home.component';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
     BuscadorComponent,
     PadreComponent,
-    HijoComponent
+    HijoComponent,
+    DescripcionPadreComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import {FindService} from "./Servicios/find.service";
     BrowserAnimationsModule,
     MatBadgeModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [
     PadreService,FindService

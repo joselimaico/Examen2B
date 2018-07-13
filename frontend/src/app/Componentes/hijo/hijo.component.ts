@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PadreService} from "../../Servicios/padre.service";
+import {Hijo} from "../../Clases/hijo";
 
 @Component({
   selector: 'app-hijo',
@@ -8,16 +9,22 @@ import {PadreService} from "../../Servicios/padre.service";
 })
 export class HijoComponent implements OnInit {
 
-  hijos = []
-  constructor(private _hijoService: PadreService) { }
+  hijos:Hijo[]
+  constructor(private _service: PadreService) { }
 
   ngOnInit() {
-    this._hijoService.getPadres()
-      .subscribe(
-        res => this.hijos = res,
-        err => console.log(err)
-      )
+    // this._service.getHijos()
+    //   .subscribe(
+    //     res => this.hijos = res,
+    //     err => console.log(err)
+    //   )
+    this.getHijos()
+
   }
 
+  getHijos():void{
+    this._service.getHijos()
+      .subscribe(hijos => this.hijos = hijos);
+  }
 
 }
