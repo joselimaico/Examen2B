@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PadreService} from "../../Servicios/padre.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import { Location } from '@angular/common';
 import {Padre} from "../../Clases/padre";
+import {Hijo} from "../../Clases/hijo";
 
 @Component({
   selector: 'app-descripcion-padre',
@@ -13,9 +14,12 @@ export class DescripcionPadreComponent implements OnInit {
 
 
   @Input() padre:Padre
+  selectedHijo:Hijo
+
 
   constructor(private _service:PadreService,
               private route:ActivatedRoute,
+              private _router:Router,
               private _location: Location) {
   }
 
@@ -34,6 +38,14 @@ export class DescripcionPadreComponent implements OnInit {
   goBack(): void {
     this._location.back();
   }
+
+  mostrarDetalleHijo(hijo:Hijo):void{
+
+    this._router.navigate(['/hijo',hijo.id]);
+    this.selectedHijo=hijo
+
+  }
+
 
 }
 

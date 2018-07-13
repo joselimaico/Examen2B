@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PadreService} from "../../Servicios/padre.service";
 import {Hijo} from "../../Clases/hijo";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Padre} from "../../Clases/padre";
 
 @Component({
@@ -13,8 +13,10 @@ import {Padre} from "../../Clases/padre";
 export class HijoComponent implements OnInit {
 
   hijos:Hijo[]
+  selectedHijo:Hijo
   constructor(private _service: PadreService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private _router:Router) { }
 
   ngOnInit() {
 
@@ -32,10 +34,11 @@ export class HijoComponent implements OnInit {
     console.log(this.hijos)
   }
 
-  // getHijo(): void {
-  //   //const id = +this.route.snapshot.paramMap.get('id');
-  //   this._service.getHijo(this.id)
-  //     .subscribe(hijo => this.hijo = hijo);
-  // }
+  mostrarDetalleHijo(hijo:Hijo):void{
+
+    this._router.navigate(['/hijo',hijo.id]);
+    this.selectedHijo=hijo
+
+  }
 
 }

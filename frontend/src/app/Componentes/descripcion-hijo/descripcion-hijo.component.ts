@@ -26,4 +26,7 @@ export class DescripcionHijoComponent implements OnInit {
     this._service.getHijo(id)
       .subscribe(hijo => this.hijo = hijo);
   }
+  goBack(): void {
+    this._location.back();
+  }
 }

@@ -18,11 +18,7 @@ export class PadreComponent implements OnInit {
               private _route:ActivatedRoute) { }
 
   ngOnInit() {
-    // this._padreService.getPadres()
-    //   .subscribe(
-    //     res => this.padres = res,
-    //     err => console.log(err)
-    //   )
+
     this.getPadres()
 
   }

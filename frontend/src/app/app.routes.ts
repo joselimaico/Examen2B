@@ -4,6 +4,7 @@ import {DescripcionPadreComponent} from "./Componentes/descripcion-padre/descrip
 import {PadreComponent} from "./Componentes/padre/padre.component";
 import {HijoComponent} from "./Componentes/hijo/hijo.component";
 import {HomeComponent} from "./Componentes/home/home.component";
+import {DescripcionHijoComponent} from "./Componentes/descripcion-hijo/descripcion-hijo.component";
 
 export const RUTAS_APP: Routes = [
   {
@@ -17,8 +18,16 @@ export const RUTAS_APP: Routes = [
   },
   {
     path:'padre/:id',
-    component: DescripcionPadreComponent
+    component: DescripcionPadreComponent,
+    children:[
+      {path:'hijo/:id',component:DescripcionHijoComponent}
+
+    ]
   },
+  {
+    path:'hijo/:id',
+    component:DescripcionHijoComponent
+  }
 
 
 
