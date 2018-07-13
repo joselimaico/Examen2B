@@ -1,4 +1,4 @@
-<div class="row mt-5">
+<div class="row mt-5" >
   <div class="col-md-3 mb-3" *ngFor="let hijo of hijos">
     <div class="card text-center">
       <div class="card-body">
@@ -8,7 +8,7 @@
         <!--<a href="#" class="btn btn-success">Buy Tickets</a>-->
       </div>
       <div class="card-footer text-muted">
-        {{hijo.date | date:'shortDate'}}
+        {{hijo.price | currency}}
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ import {FindService} from "./Servicios/find.service";
 import { DescripcionPadreComponent } from './Componentes/descripcion-padre/descripcion-padre.component';
 import { HomeComponent } from './Componentes/home/home.component';
 import {MatButtonModule} from '@angular/material/button';
+import { DescripcionHijoComponent } from './Componentes/descripcion-hijo/descripcion-hijo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     PadreComponent,
     HijoComponent,
     DescripcionPadreComponent,
-    HomeComponent
+    HomeComponent,
+    DescripcionHijoComponent
   ],
   imports: [
     BrowserModule,

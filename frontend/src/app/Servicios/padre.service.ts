@@ -5,12 +5,14 @@ import {Padre} from "../Clases/padre";
 import { Observable, of } from 'rxjs';
 import {catchError,map,tap} from "rxjs/operators";
 import {Hijo} from "../Clases/hijo";
+import {Usuario} from "../Clases/usuario";
 @Injectable(
    {providedIn: 'root'}
   )
 export class PadreService {
   private _padresUrl = "http://localhost:1337/api";
   private _hijoUrl = "http://localhost:1337/aplicaciones";
+  private _usuarioUrl="http://localhost:1337/user"
 
   constructor(private http: HttpClient) {
 
@@ -37,6 +39,14 @@ export class PadreService {
 
    getHijos():Observable<Hijo[]>{
      return this.http.get<Hijo[]>(this._hijoUrl)
+   }
+
+   getUsuario():Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this._usuarioUrl)
+   }
+   getHijo(id:number):Observable<Hijo>{
+    const url=`${this._hijoUrl}/${id}`
+     return this.http.get<Hijo>(url)
    }
 
 }

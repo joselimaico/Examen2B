@@ -1,0 +1,24 @@
+<div class="row mt-5" *ngIf="hijo">
+  <div class="col-md-12 mb-3" >
+    <div class="card  text-center"  >
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <img class="card-img-top" src="{{hijo.img}}" alt="imagen SO">
+          </div>
+          <div class="col-sm-6">
+            <h1 class="card-title">{{hijo.name| uppercase}}</h1>
+            <p class="card-text">Versión: {{hijo.version}}</p>
+            <p class="card-text">Fecha Lanzamiento: {{hijo.date}}</p>
+            <p class="card-text">Peso GB: {{hijo.weight}}</p>
+            <p class="card-text">Instalado: {{hijo.price}}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

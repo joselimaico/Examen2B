@@ -16,6 +16,7 @@ module.exports = {
     url:{type:'string',required:true},
     cart:{type:'boolean',required:true},
     img:{type:'string',required:true},
+    price:{type:'number',required:true},
     so:{model:'api'}
 
   },

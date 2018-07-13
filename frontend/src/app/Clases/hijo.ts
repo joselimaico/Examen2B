@@ -8,4 +8,6 @@ export class Hijo {
   cart:boolean
   img:string;
   so:number
+  price:number
+
 }

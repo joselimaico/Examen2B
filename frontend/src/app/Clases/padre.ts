@@ -8,4 +8,5 @@ export class Padre {
   weight:number;
   installed:boolean
   img:string;
+  apps:[any]
 }
