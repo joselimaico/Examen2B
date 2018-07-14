@@ -19,6 +19,9 @@ import { HomeComponent } from './Componentes/home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import { DescripcionHijoComponent } from './Componentes/descripcion-hijo/descripcion-hijo.component';
 import { CartComponent } from './Componentes/cart/cart.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MensajeComponent } from './Componentes/mensaje/mensaje.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,11 +31,13 @@ import { CartComponent } from './Componentes/cart/cart.component';
     DescripcionPadreComponent,
     HomeComponent,
     DescripcionHijoComponent,
-    CartComponent
+    CartComponent,
+    MensajeComponent,
+
   ],
   imports: [
     BrowserModule,
-
+    MatSnackBarModule,
     RouterModule.forRoot(
       RUTAS_APP,
       {
@@ -52,6 +57,9 @@ import { CartComponent } from './Componentes/cart/cart.component';
     PadreService,FindService
 
 
+  ],
+  entryComponents:[
+    MensajeComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -17,7 +17,7 @@ export class PadreService {
   private _hijoUrl = "http://localhost:1337/aplicaciones";
   private _usuarioUrl="http://localhost:1337/usuario"
   private _hijoCart="http://localhost:1337/aplicaciones?cart=true"
-   _contadorCart:number=0
+   _contadorCart:number
   cambioContadorCart: EventEmitter<number> = new EventEmitter();
 
   constructor(private http: HttpClient) {

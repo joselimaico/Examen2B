@@ -5,6 +5,8 @@ import {Hijo} from "../../Clases/hijo";
 import {Router} from "@angular/router";
 import {Usuario} from "../../Clases/usuario";
 import {NgbModal,ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
+import {MatSnackBar} from "@angular/material";
+import {MensajeComponent} from "../mensaje/mensaje.component";
 
 @Component({
   selector: 'app-cart',
@@ -19,14 +21,15 @@ export class CartComponent implements OnInit,OnChanges {
   resultados:number=0
   constructor(private _service:PadreService,
               private _router:Router,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              public snackBar: MatSnackBar) {
 
   }
 
   ngOnInit() {
     this.getHijosCart()
     this.getUsuario()
-   // this.sumarPrecio()
+    this.sumarPrecio()
 
 
   }
@@ -81,7 +84,15 @@ export class CartComponent implements OnInit,OnChanges {
       .subscribe(usuario => this.usuario = usuario);
 
   }
+  openSnackBar(){
+    this.snackBar.openFromComponent(MensajeComponent, {
+      duration: 1000,
+    });
+
+  }
 
 
 
 }
+
+
