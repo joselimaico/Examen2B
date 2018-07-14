@@ -32,6 +32,7 @@ import { CartComponent } from './Componentes/cart/cart.component';
   ],
   imports: [
     BrowserModule,
+
     RouterModule.forRoot(
       RUTAS_APP,
       {

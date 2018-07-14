@@ -30,9 +30,12 @@ export class DescripcionHijoComponent implements OnInit {
   goBack(): void {
     this._location.back();
   }
-  comprar(){
-    this.contador+=1
-    this._service.emitirCambioContadorCart(this.contador)
-    this._location.back();
+  comprar():void{
+    // this.contador+=1
+    // this._service.emitirCambioContadorCart(this.contador)
+    // this._location.back();
+    const id = +this.route.snapshot.paramMap.get('id');
+    this._service.updateHijo(id,this.hijo)
+      .subscribe(() => this.goBack());
   }
 }

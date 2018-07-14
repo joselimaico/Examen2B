@@ -1,17 +1,22 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Padre} from "../Clases/padre";
 import { Observable, of } from 'rxjs';
 import {catchError,map,tap} from "rxjs/operators";
 import {Hijo} from "../Clases/hijo";
 import {Usuario} from "../Clases/usuario";
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable(
    {providedIn: 'root'}
   )
 export class PadreService {
   private _padresUrl = "http://localhost:1337/api";
   private _hijoUrl = "http://localhost:1337/aplicaciones";
-  private _usuarioUrl="http://localhost:1337/user"
+  private _usuarioUrl="http://localhost:1337/usuario"
+  private _hijoCart="http://localhost:1337/aplicaciones?cart=true"
    _contadorCart:number=0
   cambioContadorCart: EventEmitter<number> = new EventEmitter();
 
@@ -54,5 +59,34 @@ export class PadreService {
     const url=`${this._hijoUrl}/${id}`
      return this.http.get<Hijo>(url)
    }
+  updateHijo (id:number,hijo: Hijo): Observable<any> {
+    const url = `${this._hijoUrl}/${id}`
+    let bodyObj = {
+
+      id: id,
+      cart: true
+    };
+    return this.http.put(url, JSON.stringify(bodyObj), httpOptions)
+      // .pipe(
+      // tap(_ => this.log(`updated hero id=${hero.id}`)),
+      // catchError(this.handleError<any>('updateHero'))
+      // );
+  }
+  getHijosCart():Observable<Hijo[]>{
+    return this.http.get<Hijo[]>(this._hijoCart)
+  }
+  eliminarHijosCart (id:number): Observable<any> {
+    const url = `${this._hijoUrl}/${id}`
+    let bodyObj = {
+
+      id: id,
+      cart: false
+    };
+    return this.http.put(url, JSON.stringify(bodyObj), httpOptions)
+    // .pipe(
+    // tap(_ => this.log(`updated hero id=${hero.id}`)),
+    // catchError(this.handleError<any>('updateHero'))
+    // );
+  }
 
 }

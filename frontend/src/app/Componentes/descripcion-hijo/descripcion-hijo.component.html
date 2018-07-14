@@ -1,4 +1,4 @@
-<div class="row mt-5" *ngIf="hijo">
+<div class="row mt-5" *ngIf="!hijo.cart">
   <div class="col-md-12 mb-3" >
     <div class="card  text-center"  >
       <div class="card-body">
@@ -25,9 +25,24 @@
     <div class="col-sm-6 pt-5">
       <button mat-raised-button (click)="goBack()">regresar</button>
     </div>
-    <div class="col-sm6 pt-5" >
+    <div class="col-sm-6 pt-5" >
       <button mat-raised-button color="primary" (click)="comprar()">Añadir al Carrito</button>
     </div>
+  </div>
+
+</div>
+
+<div class="row mt-5" *ngIf="hijo.cart">
+  <div class="col-sm-6">
+    <mat-icon>sentiment_very_dissatisfied</mat-icon>
+
+  </div>
+  <div class="col-sm-6 texto">
+    <h1>no disponible</h1>
+  </div>
+
+  <div class="col-sm-4">
+    <button mat-raised-button (click)="goBack()">regresar</button>
   </div>
 
 </div>

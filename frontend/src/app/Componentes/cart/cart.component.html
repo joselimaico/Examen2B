@@ -1,20 +1,17 @@
 <div class="row">
   <div class="col-md-12 pt-5" >
-    <div class="card  text-center"  >
+    <div class="card  text-center" *ngFor="let user of usuario" >
       <div class="card-body">
         <div class="row">
-          <div class="col-sm-2">
-            <!--<img class="card-img-top" src="{{hijo.img}}" width="200" height="250" alt="imagen app">-->
-            <mat-icon matSuffix >account_circle</mat-icon>
-          </div>
-          <div class="col-sm-8">
-            <h1 class="card-title">
-              <!--{{hijo.name| uppercase}}-->
-              nombre
-            </h1>
-            <p class="card-text">apellido: {{hijo.version}}</p>
-            <p class="card-text">correo usuario: {{hijo.date}}</p>
-            <p class="card-text">direccion: {{hijo.weight}}</p>
+
+          <div class="col-sm-10">
+            <h4 class="card-title"> Detalles de la Cuenta</h4>
+            <p class="card-text">
+              Nombre: {{user.nombre| uppercase}}
+            </p>
+            <p class="card-text">Apellido: {{user.apellido}}</p>
+            <p class="card-text">Correo electrónico: {{user.correo}}</p>
+            <p class="card-text">Dirección: {{user.direccion}}</p>
 
           </div>
           <div class="col-sm-2">
@@ -29,8 +26,9 @@
     </div>
 
   </div>
+
   <div class="col-md-12 pt-5" >
-    <div class="card  text-center"  >
+    <div class="card  text-center" *ngFor="let user of usuario" >
       <div class="card-body">
         <div class="row">
           <div class="col-sm-1">
@@ -38,17 +36,17 @@
           </div>
           <!---->
           <div class="col-sm-8">
-            <h1 class="card-title">
-              <!--{{hijo.name| uppercase}}-->
-              nombre
-            </h1>
-            <p class="card-text">apellido: {{hijo.version}}</p>
-            <p class="card-text">correo usuario: {{hijo.date}}</p>
-            <p class="card-text">direccion: {{hijo.weight}}</p>
+            <h4 class="card-title">Detalles de Facturación</h4>
+            <p class="card-text">
+              Nombre: {{user.nombre| uppercase}}
+            </p>
+            <p class="card-text">Apellido: {{user.apellido}}</p>
+            <p class="card-text">correo electrónico: {{user.correo}}</p>
+            <p class="card-text">Dirección: {{user.direccion}}</p>
 
           </div>
           <div class="col-sm-3">
-            <button mat-raised-button color="accent" >Editar Datos de Facturación</button>
+            <button mat-raised-button color="accent" (click)="open(content)" >Editar Datos de Facturación</button>
           </div>
 
 
@@ -59,26 +57,25 @@
     </div>
 
   </div>
+
   <div class="col-md-12 pt-5" >
-    <div class="card  text-center"  >
+    <div class="card  text-center" *ngFor="let hijo of hijosCart" >
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-            <!--<img class="card-img-top" src="{{hijo.img}}" width="200" height="250" alt="imagen app">-->
-            imagen
+            <img class="card-img-top" src="{{hijo.img}}" width="200" height="250" alt="imagen app">
           </div>
           <div class="col-sm-6">
-            <h1 class="card-title">
-              <!--{{hijo.name| uppercase}}-->
-              nombre
-            </h1>
+            <p class="card-title">
+              {{hijo.name| uppercase}}
+            </p>
             <p class="card-text">Versión: {{hijo.version}}</p>
             <p class="card-text">Fecha Lanzamiento: {{hijo.date}}</p>
             <p class="card-text">Peso GB: {{hijo.weight}}</p>
             <p class="card-text">Precio: {{hijo.price|currency}}</p>
           </div>
           <div class="col-sm-2">
-            <button mat-raised-button color="warn" >Eliminar</button>
+            <button mat-raised-button color="warn" (click)="eliminarHijo(hijo)">Eliminar</button>
           </div>
 
         </div>
@@ -88,8 +85,44 @@
     </div>
 
   </div>
+  <div class="col-sm-12 pt-3">
+    <div class="card  text-center" >
+      <div class="card-body">
+        <!--<button (click)="sumarPrecio()" >sumar precio</button>-->
+        <p class="card-text">Precio: {{resultados|currency}}</p>
+      </div>
+
+    </div>
+
+  </div>
+
 
 </div>
-
-
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+              <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div>
+</ng-template>
+<br>
 
